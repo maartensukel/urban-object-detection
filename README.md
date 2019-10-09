@@ -2,7 +2,7 @@
 
 # Garbage detection using pytorch and YoloV3
 ## (Placeholder, work in progress)
-PyTorch implementation of a garbage detection model. This repositorie contains all code for predicting/detecting and evaulating the model.
+PyTorch implementation of a garbage detection model. This repository contains all code for predicting/detecting and evaulating the model.
 
 This repository is a combination of the following repositories:
 * https://github.com/zhaoyanglijoey/yolov3
