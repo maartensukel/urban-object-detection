@@ -6,7 +6,9 @@ This repository is a combination of the following repositories:
 https://github.com/zhaoyanglijoey/yolov3
 https://github.com/ultralytics/yolov3
 
-[![Demo](https://img.youtube.com/vi/eP9xmQHbYCM/0.jpg)](https://www.youtube.com/watch?v=eP9xmQHbYCM)
+![Demo 1](https://github.com/maartensukel/yolov3-pytorch-garbage-detection/raw/master/demo/garb_demo_1.gif)
+
+
 
 Test and prediction code for a garbage object detection
 
