@@ -22,13 +22,13 @@ pip install -r requirements.txt
 ## Predictions
 To run predictions, download the cfg and weights from https://drive.google.com/open?id=1X62NUWxKD_hu9Z0ORFf25yLFkDqDAR0F
 
-Then for example run the following the make a prediction on a file:
+Then for example run the following the make a prediction on a file using CPU:
 
 ```
-python detector_garb.py -i samples/input5_frame281.jpg -o output --cuda
+python detector_garb.py -i samples/input5_frame281.jpg -o output
 ```
 
-Or to realtime detect on your webcam:
+Or to realtime detect on your webcam using GPU: (CUDA must be installed)
 ```
 python detector_garb.py -i 0 --webcam --video -o ./webcam_output/ --cuda
 ```
