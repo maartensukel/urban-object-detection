@@ -5,6 +5,13 @@
 
 Test and prediction code for a garbage object detection
 
+## Installations
+
+To all libaries:
+```
+pip install -r requirements.txt
+```
+
 ## Predictions
 To run predictions, download the cfg and weights from https://drive.google.com/open?id=1X62NUWxKD_hu9Z0ORFf25yLFkDqDAR0F
 
@@ -15,6 +22,9 @@ python detector_garb.py -i samples/input5_frame281.jpg -o output --cuda
 ```
 
 ## Test
+
+For testing download data from:
+https://drive.google.com/open?id=1DjeNxdaF7AW3Nu54_3oRw_1SeYJtOvNL
 
 To run test execute the following code:
 
@@ -38,9 +48,9 @@ https://github.com/maartensukel/yolov3-garbage-object-detection-training
 
 ## TODO:
 
-~~Add test, with test results to readme.~~
- Add (test) data. 
- Make readme more clear.
- Clean code. 
- Clean data from personal information. 
- Make public.
+*~~Add test, with test results to readme.~~
+* Add (test) data. 
+* Make readme more clear.
+* Clean code. 
+* Clean data from personal information. 
+* Make public.
