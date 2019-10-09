@@ -1,3 +1,5 @@
+![Demo 2](https://github.com/maartensukel/yolov3-pytorch-garbage-detection/raw/master/demo/garb_demo_2.gif)
+
 # Garbage detection using pytorch and YoloV3
 ## (Placeholder, work in progress)
 PyTorch implementation of a garbage detection model. This repositorie contains all code for predicting/detecting and evaulating the model.
@@ -6,9 +8,7 @@ This repository is a combination of the following repositories:
 * https://github.com/zhaoyanglijoey/yolov3
 * https://github.com/ultralytics/yolov3
 
-![Demo 1](https://github.com/maartensukel/yolov3-pytorch-garbage-detection/raw/master/demo/garb_demo_1.gif) | [Demo 2](https://github.com/maartensukel/yolov3-pytorch-garbage-detection/raw/master/demo/garb_demo_2.gif)
-
-
+![Demo 1](https://github.com/maartensukel/yolov3-pytorch-garbage-detection/raw/master/demo/garb_demo_1.gif)
 
 Test and prediction code for a garbage object detection
 
