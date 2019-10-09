@@ -48,9 +48,11 @@ https://github.com/maartensukel/yolov3-garbage-object-detection-training
 
 ## TODO:
 
-*~~Add test, with test results to readme.~~
-* Add (test) data. 
+~~*Add test, with test results to readme.~~
+~~* Add (test) data. ~~
 * Make readme more clear.
 * Clean code. 
 * Clean data from personal information. 
+* Collect feedback
 * Make public.
+* Write post
