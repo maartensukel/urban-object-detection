@@ -46,6 +46,8 @@ python test.py
 
 
 
+![test_example](https://github.com/maartensukel/yolov3-pytorch-garbage-detection/raw/master/test_batch0.jpg =250x)
+
 ## Training
 For training a new model look at:
 
