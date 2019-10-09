@@ -6,7 +6,7 @@ This repository is a combination of the following repositories:
 * https://github.com/zhaoyanglijoey/yolov3
 * https://github.com/ultralytics/yolov3
 
-![Demo 1](https://github.com/maartensukel/yolov3-pytorch-garbage-detection/raw/master/demo/garb_demo_1.gif) | ![Demo 2](https://github.com/maartensukel/yolov3-pytorch-garbage-detection/raw/master/demo/garb_demo_2.gif)
+![Demo 1](https://github.com/maartensukel/yolov3-pytorch-garbage-detection/raw/master/demo/garb_demo_1.gif) | [Demo 2](https://github.com/maartensukel/yolov3-pytorch-garbage-detection/raw/master/demo/garb_demo_2.gif)
 
 
 
