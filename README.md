@@ -1,4 +1,8 @@
 # yolov3-pytorch-garbage-detection
+
+
+[![Demo](https://img.youtube.com/vi/eP9xmQHbYCM/0.jpg)](https://www.youtube.com/watch?v=eP9xmQHbYCM)
+
 Test and prediction code for a garbage object detection
 
 
@@ -11,4 +15,4 @@ python detector_garb.py -i samples/input5_frame281.jpg -o output --cuda
 
 TODO:
 
-Add test. Make readme more clear. Clean code.
+Add test, with test results to readme. Add (test) data. Make readme more clear. Clean code. Clean data from personal information. Make public.
