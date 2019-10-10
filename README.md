@@ -13,7 +13,7 @@ Test and prediction code for a garbage object detection
 
 ## Installation
 
-To all libaries:
+To install all required libaries:
 ```
 pip install -r requirements.txt
 ```
@@ -24,7 +24,7 @@ To run predictions, download the cfg and weights from https://drive.google.com/o
 Then for example run the following the make a prediction on a file using CPU:
 
 ```
-python detector_garb.py -i samples/input5_frame281.jpg -o output
+python detector_garb.py -i samples/input5_frame11.jpg -o output
 ```
 
 Or to realtime detect on your webcam using GPU: (CUDA must be installed)
