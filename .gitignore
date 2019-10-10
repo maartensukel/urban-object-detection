@@ -107,3 +107,4 @@ venv.bak/
 data/garb.weights
 data/images
 data/labels
+weights
