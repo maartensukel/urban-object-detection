@@ -59,13 +59,3 @@ python test.py
 For training a new model look at:
 
 https://github.com/maartensukel/yolov3-garbage-object-detection-training
-
-## TODO:
-
-* Make readme more clear.
-* Add inference/prediction speed.
-* Clean code. 
-* Clean data from personal information. (License plates, faces)
-* Collect feedback, code review.
-* Make public.
-* Write post
