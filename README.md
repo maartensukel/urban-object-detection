@@ -20,7 +20,7 @@ pip install -r requirements.txt
 ```
 
 ## Predictions
-To run predictions, download the cfg and weights from https://drive.google.com/open?id=1X62NUWxKD_hu9Z0ORFf25yLFkDqDAR0F
+To run predictions, download the cfg and weights from https://drive.google.com/open?id=1DjeNxdaF7AW3Nu54_3oRw_1SeYJtOvNL and put them in the correct folders. 
 
 Then for example run the following the make a prediction on a file using CPU:
 
