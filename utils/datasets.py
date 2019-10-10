@@ -190,7 +190,7 @@ class LoadImagesAndLabels(Dataset):  # for training/testing
 
 
         # Define labels
-        self.label_files = [x.replace('images', 'labels').split('.')[0]+'.txt' for x in self.img_files]
+        self.label_files = [x.replace('images', 'labels').replace('jpg', 'txt') for x in self.img_files]
         print(self.img_files)
         print("labels loaded: ",len(self.label_files))
         print(self.label_files[:5])

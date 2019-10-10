@@ -66,7 +66,7 @@ def test(cfg,
         _, _, height, width = imgs.shape  # batch size, channels, height, width
 
         # Plot images with bounding boxes
-        if batch_i == 0 and not os.path.exists('test_batch0.jpg'):
+        if batch_i == 0:
             plot_images(imgs=imgs, targets=targets, paths=paths, fname='test_batch0.jpg')
 
         # Run model
@@ -196,10 +196,10 @@ def test(cfg,
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(prog='test.py')
-    parser.add_argument('--cfg', type=str, default='cfg/yolov3_garb.cfg', help='cfg file path')
-    parser.add_argument('--data', type=str, default='cfg/garb.data', help='coco.data file path')
+    parser.add_argument('--cfg', type=str, default='cfg/yolov3_garb_test.cfg', help='cfg file path')
+    parser.add_argument('--data', type=str, default='cfg/garb.data', help='garb.data file path')
     parser.add_argument('--weights', type=str, default='weights/garb.weights', help='path to weights file')
-    parser.add_argument('--batch-size', type=int, default=16, help='size of each image batch')
+    parser.add_argument('--batch-size', type=int, default=1, help='size of each image batch')
     parser.add_argument('--img-size', type=int, default=416, help='inference size (pixels)')
     parser.add_argument('--iou-thres', type=float, default=0.5, help='iou threshold required to qualify as detected')
     parser.add_argument('--conf-thres', type=float, default=0.001, help='object confidence threshold')
