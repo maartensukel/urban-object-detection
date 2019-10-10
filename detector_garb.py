@@ -187,7 +187,7 @@ def main():
 
     print('Loading network...')
     model = Darknet("cfg/yolov3_garb_test.cfg")
-    model.load_weights('garb.weights')
+    model.load_weights('weights/garb.weights')
     if args.cuda:
         model.cuda()
 

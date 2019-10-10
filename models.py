@@ -295,7 +295,7 @@ def load_darknet_weights(self, weights, cutoff=-1):
     file = Path(weights).name
 
     # Try to download weights if not available locally
-    msg = weights + ' missing, download from https://drive.google.com/drive/folders/1uxgUBemJVw9wZsdpboYbzUN4bcRhsuAI'
+    msg = weights + ' missing, download from https://drive.google.com/open?id=1DjeNxdaF7AW3Nu54_3oRw_1SeYJtOvNL'
     if not os.path.isfile(weights):
         if file == 'yolov3-spp.weights':
             gdrive_download(id='1oPCHKsM2JpM-zgyepQciGli9X0MTsJCO', name=weights)
