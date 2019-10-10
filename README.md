@@ -1,9 +1,9 @@
 ![Demo 2](https://github.com/maartensukel/yolov3-pytorch-garbage-detection/raw/master/demo/garb_demo_2.gif)
 
 # Garbage detection using pytorch and YoloV3
-PyTorch implementation of a garbage detection model. This repository contains all code for predicting/detecting and evaulating the model.
+PyTorch implementation of a garbage detection model. This repository contains all code for predicting/detecting and evaulating the model. The current version can detect garbage bags, cardboard and household waste containers.
 
-This repository is a combination of the following repositories:
+This repository combines elements from:
 * https://github.com/zhaoyanglijoey/yolov3
 * https://github.com/ultralytics/yolov3
 
@@ -37,6 +37,8 @@ python detector_garb.py -i 0 --webcam --video -o ./webcam_output/ --cuda
 
 For testing download data from:
 https://drive.google.com/open?id=1DjeNxdaF7AW3Nu54_3oRw_1SeYJtOvNL
+
+The dataset contains 804 images and label files.
 
 To run test execute the following code:
 
