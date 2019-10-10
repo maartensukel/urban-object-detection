@@ -3,7 +3,7 @@
 # Garbage detection using PyTorch and YoloV3
 ### (Work in progress)
 
-For more information, look at [https://medium.com/maarten-sukel/garbage-object-detection-using-pytorch-and-yolov3-d6c4e0424a10](this) medium post.
+For more information, look at [this](https://medium.com/maarten-sukel/garbage-object-detection-using-pytorch-and-yolov3-d6c4e0424a10) medium post.
 
 PyTorch implementation of a garbage detection model. This repository contains all code for predicting/detecting and evaulating the model. The current version can detect garbage bags, cardboard and household waste containers.
 
