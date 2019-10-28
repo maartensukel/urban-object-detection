@@ -33,6 +33,13 @@ Or to realtime detect on your webcam using GPU: (CUDA must be installed)
 python detector_garb.py -i 0 --webcam --video -o ./webcam_output/ --cuda
 ```
 
+# Docker
+
+To run code in docker
+```
+docker-compose build
+docker-compose up
+```
 
 ## Test
 

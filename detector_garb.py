@@ -49,6 +49,7 @@ def draw_bbox(imgs, bbox, colors, classes,read_frames,output_path):
 
     label = label+' '+str(confidence)+'%'
 
+    print(label)
 
     p1 = tuple(bbox[1:3].int())
     p2 = tuple(bbox[3:5].int())
@@ -80,7 +81,7 @@ def detect_video(model, args):
     width, height = int(cap.get(cv2.CAP_PROP_FRAME_WIDTH)), int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
 
     fps = cap.get(cv2.CAP_PROP_FPS)
-    print(width, height,fps)
+
     fourcc = cv2.VideoWriter_fourcc(*'XVID')
     out = cv2.VideoWriter(output_path, fourcc, fps, (width, height))
     read_frames = 0
@@ -164,7 +165,7 @@ def detect_image(model, args):
             continue
 
         detections = transform_result(detections, img_batch, input_size)
-        print(detections)
+
         for detection in detections:
             draw_bbox(img_batch, detection, colors, classes,0,args.outdir)
 
