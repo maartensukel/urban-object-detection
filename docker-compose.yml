@@ -1,7 +1,5 @@
 version: '3.0'
 services:
 
-  web:
+  pytorch-detection:
     build: .
-    ports:
-      - "8140:8000"

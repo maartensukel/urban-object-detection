@@ -172,6 +172,7 @@ def detect_image(model, args):
         for i, img in enumerate(img_batch):
             save_path = osp.join(args.outdir, osp.basename(imlist[batchi*batch_size + i]))
             cv2.imwrite(save_path, img)
+            print(save_path, 'saved')
 
     end_time = datetime.now()
     print('Detection finished in %s' % (end_time - start_time))
