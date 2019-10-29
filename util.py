@@ -4,6 +4,7 @@ import os
 import sys
 import cv2
 import numpy as np
+import math
 
 # conduct objectness score filtering and non max supperssion
 def process_result(detection, obj_threshhold, nms_threshhold):
@@ -125,3 +126,44 @@ def transform_result(detections, imgs, input_size):
     detections[:, [2, 4]] = torch.min(detections[:, [2, 4]], img_dims[:, 0].unsqueeze(-1))
 
     return detections
+
+# create batches out of imgs
+def create_batches(imgs, batch_size):
+    num_batches = math.ceil(len(imgs) // batch_size)
+    batches = [imgs[i*batch_size : (i+1)*batch_size] for i in range(num_batches)]
+
+    return batches
+
+# draw a bbox
+def draw_bbox(imgs, bbox, colors, classes,read_frames,output_path):
+    img = imgs[int(bbox[0])]
+
+    label = classes[int(bbox[-1])]
+
+    confidence = int(float(bbox[6])*100)
+
+    label = label+' '+str(confidence)+'%'
+
+    p1 = tuple(bbox[1:3].int())
+    p2 = tuple(bbox[3:5].int())
+
+    color = colors[int(bbox[-1])]
+    cv2.rectangle(img, p1, p2, color, 4)
+    text_size = cv2.getTextSize(label, cv2.FONT_HERSHEY_SIMPLEX, 1, 1)[0]
+    p3 = (p1[0], p1[1] - text_size[1] - 4)
+    p4 = (p1[0] + text_size[0] + 4, p1[1])
+    cv2.rectangle(img, p3, p4, color, -1)
+
+    cv2.putText(img, label, p1, cv2.FONT_HERSHEY_SIMPLEX, 1, [225, 255, 255], 1)
+
+# create_output_json
+def create_output_json(img, bbox, colors, classes):
+
+    label = classes[int(bbox[-1])]
+
+    confidence = int(float(bbox[6])*100)
+
+    p1 = [int(x) for x in tuple(bbox[1:3].int())]
+    p2 = [int(x) for x in tuple(bbox[3:5].int())]
+
+    return {'class':label,'confidence':confidence,'coordinate1':p1,'coordinate2':p2}
