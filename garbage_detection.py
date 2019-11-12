@@ -60,7 +60,63 @@ class GarbageImageClassifier:
 
     # ----
 
-    def detect_image(self,data_frame,colors=[(39, 129, 113), (164, 80, 133), (83, 122, 114)],classes=['container_small', 'garbage_bag', 'cardboard']):
+    def detect_image(self,path,colors=[(39, 129, 113), (164, 80, 133), (83, 122, 114)],classes=['container_small', 'garbage_bag', 'cardboard']):
+
+        print('Loading input image(s)...')
+        input_size = [int(self.model.net_info['height']), int(self.model.net_info['width'])]
+        batch_size = int(self.model.net_info['batch'])
+
+        imlist, imgs = load_images(path)
+        print('Input image(s) loaded')
+
+        img_batches = create_batches(imgs, batch_size)
+
+
+        
+        print('Detecting...')
+
+        all_images_attributes = []
+
+        for batchi, img_batch in enumerate(img_batches):
+            start_time = datetime.now()
+            img_tensors = [cv_image2tensor(img, input_size) for img in img_batch]
+            img_tensors = torch.stack(img_tensors)
+            img_tensors = Variable(img_tensors)
+            if self.cuda:
+                img_tensors = img_tensors.cuda()
+            detections = self.model(img_tensors, self.cuda).cpu()
+            detections = process_result(detections, self.obj_thresh, self.nms_thresh)
+            if len(detections) == 0:
+                continue
+
+            detections = transform_result(detections, img_batch, input_size)
+
+            boxes = []
+            for detection in detections:
+                boxes.append(create_output_json(img_batch, detection, colors, classes))
+
+            images_attributes = {}
+            images_attributes['frameMeta'] = {'width':input_size[1],'height':input_size[0]}
+            images_attributes['detectedObjects'] = boxes
+
+            images_attributes['counts'] = {x:0 for x in classes}
+            images_attributes['counts']['total'] = 0
+            
+            for box in boxes:
+                images_attributes['counts'][box['detectedObjectType']] +=1
+                images_attributes['counts']['total'] +=1
+            end_time = datetime.now()
+            print('Detection finished in %s' % (end_time - start_time))
+            images_attributes['mlDoneAt'] = str(end_time)
+            images_attributes['mlTimeTaken'] = end_time - start_time
+
+            all_images_attributes.append(images_attributes)
+
+        return all_images_attributes
+
+    # ----
+
+    def detect_image_data_frame(self,data_frame,colors=[(39, 129, 113), (164, 80, 133), (83, 122, 114)],classes=['container_small', 'garbage_bag', 'cardboard']):
 
         print('Loading input image(s)...')
         input_size = [int(self.model.net_info['height']), int(self.model.net_info['width'])]
@@ -71,8 +127,6 @@ class GarbageImageClassifier:
 
         img_batches = create_batches(imgs, batch_size)
 
-
-        
         print('Detecting...')
 
         all_images_attributes = []
