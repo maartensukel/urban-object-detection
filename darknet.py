@@ -3,8 +3,11 @@ import torch
 import numpy as np
 from torch.autograd import Variable
 
-# parse the cfg file to blocks
+
 def parse_cfg(cfg):
+    """
+    Parse the cfg file to blocks
+    """
 
     blocks = []
     with open(cfg) as f:
@@ -27,14 +30,17 @@ def parse_cfg(cfg):
 
     return blocks
 
-# Add short cut from previou layer output
+
 class ShortcutLayer(nn.Module):
+    """ Add short cut from previou layer output
+    """
     def __init__(self, idx):
         super(ShortcutLayer, self).__init__()
         self.idx = idx
 
     def forward(self, x, outputs):
         return x + outputs[self.idx]
+
 
 class RouteLayer(nn.Module):
     def __init__(self, indices):
@@ -46,8 +52,11 @@ class RouteLayer(nn.Module):
         out = torch.cat(out, dim=1)
         return out
 
-# Transform conv output to bounding boxes of [center_x, center_y, width, height, objectness score, class scores...]
+
 class DetectionLayer(nn.Module):
+    """Transform conv output to bounding boxes
+    of [center_x, center_y, width, height, objectness score, class scores...]
+    """
     def __init__(self, anchors, num_classes, input_dim):
         super(DetectionLayer, self).__init__()
         self.anchors = torch.tensor(anchors, dtype=torch.float)
@@ -60,7 +69,9 @@ class DetectionLayer(nn.Module):
         grid_size = x.size(2)
         stride = self.input_dim // grid_size
 
-        detection = x.view(batch_size, self.num_anchors, self.num_classes + 5, grid_size, grid_size)
+        detection = x.view(
+            batch_size, self.num_anchors, self.num_classes + 5,
+            grid_size, grid_size)
         # box centers
         detection[:, :, :2, :, :] = torch.sigmoid(detection[:, :, :2, :, :])
         # objectness score and class scores
@@ -68,7 +79,8 @@ class DetectionLayer(nn.Module):
 
         # add offset to box centers
 
-        x_offset, y_offset = np.meshgrid(np.arange(grid_size), np.arange(grid_size), indexing='xy')
+        x_offset, y_offset = np.meshgrid(
+            np.arange(grid_size), np.arange(grid_size), indexing='xy')
         x_offset = torch.from_numpy(x_offset).float()
         y_offset = torch.from_numpy(y_offset).float()
 
@@ -93,12 +105,15 @@ class DetectionLayer(nn.Module):
 
         return detection
 
+
 def create_modules(blocks):
     net_info = blocks[0]    # the first block is network info
     module_list = nn.ModuleList()
     in_channel = 3
     out_channel = in_channel
-    out_channels = []   # keep track of output channel for every block for specifying conv layer input channels
+    # keep track of output channel for every
+    # block for specifying conv layer input channels
+    out_channels = []
 
     for i, block in enumerate(blocks[1:]):
         block_type = block['type']
@@ -203,7 +218,7 @@ class Darknet(nn.Module):
     '''
     Weights file structure:
     - header: 5 integers
-    - weights of conv layers 
+    - weights of conv layers
         - conv layer with batch_norm: [bn_bias, bn_weight, bn_running_meanm, bn_running_var, conv_weight]
         - conv layer without batch_norm: [conv_bias, conv_weight]
     '''

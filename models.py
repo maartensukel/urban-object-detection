@@ -8,7 +8,8 @@ ONNX_EXPORT = False
 
 
 def create_modules(module_defs, img_size, arc):
-    # Constructs module list of layer blocks from module configuration in module_defs
+    # Constructs module list of layer blocks from module
+    # configuration in module_defs
 
     hyperparams = module_defs.pop(0)
     output_filters = [int(hyperparams['channels'])]

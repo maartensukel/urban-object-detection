@@ -5,6 +5,7 @@
 import os
 from lxml import etree
 
+
 def process_cvat_xml(xml_file, image_dir, output_dir):
     """
     Transforms a single XML in CVAT format to YOLO TXT files and download images when not in IMAGE_DIR
@@ -17,20 +18,20 @@ def process_cvat_xml(xml_file, image_dir, output_dir):
     KNOWN_TAGS = {'box', 'image', 'attribute'}
 
     if (image_dir is None):
-        image_dir=os.path.join(output_dir,"data/obj")
+        image_dir=os.path.join(output_dir, "data/obj")
         os.makedirs(image_dir, exist_ok=True)
 
     os.makedirs(output_dir, exist_ok=True)
     cvat_xml = etree.parse(xml_file)
-    basename = os.path.splitext( os.path.basename( xml_file ) )[0]
+    basename = os.path.splitext( os.path.basename(xml_file))[0]
     current_labels =  {k: v for v, k in enumerate([line.rstrip('\n') for line in open('/home/maarten/Documents/projecten/pytorch/new_yolo/yolov3/data/garb.names')])}
-    
+
     current_labels = {'container_small':0,'garbage_bag':1,'cardboard':2}
 
     traintxt = ""
 
     tracks= cvat_xml.findall( './/image' )
-    
+
 
 
     for img_tag in cvat_xml.findall('image'):
@@ -70,13 +71,13 @@ def process_cvat_xml(xml_file, image_dir, output_dir):
             _yoloAnnotationContent += str(labelid)+" "+"{:.6f}".format(yolo_x) + " "+"{:.6f}".format(
                     yolo_y) + " "+"{:.6f}".format(yolo_w) + " "+"{:.6f}".format(yolo_h)
 
-            
+
         anno_name = os.path.basename(os.path.splitext(image_name)[0] + '.txt')
         anno_path = os.path.join(output_dir+'/labels/', anno_name)
-        
+
         if len(_yoloAnnotationContent) == 0:
                     _yoloAnnotationContent += "\n"
-        
+
         print(anno_name,_yoloAnnotationContent)
 
 

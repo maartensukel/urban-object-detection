@@ -1,17 +1,22 @@
+import os
+import argparse
+import logging
+import sys
+import torch
+
+
+from darknet import Darknet
 
 
 class GarbageImageClassifier:
-    
     """
-    
     Classification models
 
     Image to json output with detected objects
-    
     """
 
     def __init__(self):
-        
+
         curScriptPath = os.path.dirname(os.path.abspath(__file__)) # needed to keep track of the current location of current script ( although it is included somewhere else )
 
         parser = argparse.ArgumentParser(description='YOLOv3 object detection')
@@ -42,14 +47,14 @@ class GarbageImageClassifier:
 
         self.createLogger()
         self.logger.info("GarbageImageClassifier: Init")
-        
+
     # ----
-    
+
     def createLogger(self):
-        
+
         self.logger = logging.getLogger(__name__)
         self.logger.setLevel(level=logging.INFO) # SETTING: log level
-        
+
         # logger handlers
         handler = logging.StreamHandler()
         # handler.setLevel(logging.DEBUG)
