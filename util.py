@@ -5,6 +5,10 @@ import sys
 import cv2
 import numpy as np
 import math
+import json
+from imageio import imread
+import io
+import base64
 
 # conduct objectness score filtering and non max supperssion
 def process_result(detection, obj_threshhold, nms_threshhold):
@@ -84,6 +88,26 @@ def load_images(impath):
         sys.exit(1)
     imgs = [cv2.imread(path) for path in imlist]
     return imlist, imgs
+
+def load_data_frame(data_frame):
+    '''
+    Turn dataframe with base64 image into an opencv image
+    '''
+
+    data_frame = json.loads(data_frame)
+    
+    b64_string = str(data_frame['img']).split(',')[1]
+
+    # reconstruct image as an numpy array
+    img = imread(io.BytesIO(base64.b64decode(b64_string)))
+
+
+
+    # finally convert RGB image to BGR for opencv
+    # and save result
+    cv2_img = cv2.cvtColor(img, cv2.COLOR_RGB2BGR)
+
+    return img
 
 def cv_image2tensor(img, size):
     img = resize_image(img, size)
@@ -166,4 +190,4 @@ def create_output_json(img, bbox, colors, classes):
     p1 = [int(x) for x in tuple(bbox[1:3].int())]
     p2 = [int(x) for x in tuple(bbox[3:5].int())]
 
-    return {'class':label,'confidence':confidence,'coordinate1':p1,'coordinate2':p2}
+    return {'detectedObjectType':label,'confidence':confidence,'bbox':{'coordinate1':p1,'coordinate2':p2}}

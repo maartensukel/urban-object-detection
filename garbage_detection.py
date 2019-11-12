@@ -1,9 +1,9 @@
 import os
 import argparse 
-from darknet import Darknet
+from model.darknet import Darknet
 import torch
 import logging
-from util import process_result, load_images, resize_image, cv_image2tensor, transform_result, create_batches,create_output_json
+from model.util import process_result, load_images, resize_image, cv_image2tensor, transform_result, create_batches,create_output_json, load_data_frame
 import math
 import pickle as pkl
 import os.path as osp
@@ -60,24 +60,25 @@ class GarbageImageClassifier:
 
     # ----
 
-    def detect_image(self,path,colors=[(39, 129, 113), (164, 80, 133), (83, 122, 114)],classes=['container_small', 'garbage_bag', 'cardboard']):
+    def detect_image(self,data_frame,colors=[(39, 129, 113), (164, 80, 133), (83, 122, 114)],classes=['container_small', 'garbage_bag', 'cardboard']):
 
         print('Loading input image(s)...')
         input_size = [int(self.model.net_info['height']), int(self.model.net_info['width'])]
         batch_size = int(self.model.net_info['batch'])
 
-        imlist, imgs = load_images(path)
+        imgs = [load_data_frame(data_frame)]
         print('Input image(s) loaded')
 
         img_batches = create_batches(imgs, batch_size)
 
 
-        start_time = datetime.now()
+        
         print('Detecting...')
 
         all_images_attributes = []
 
         for batchi, img_batch in enumerate(img_batches):
+            start_time = datetime.now()
             img_tensors = [cv_image2tensor(img, input_size) for img in img_batch]
             img_tensors = torch.stack(img_tensors)
             img_tensors = Variable(img_tensors)
@@ -95,18 +96,23 @@ class GarbageImageClassifier:
                 boxes.append(create_output_json(img_batch, detection, colors, classes))
 
             images_attributes = {}
-            images_attributes['image_meta'] = {'width':input_size[1],'height':input_size[0]}
-            images_attributes['boxes'] = boxes
+            images_attributes['frameMeta'] = {'width':input_size[1],'height':input_size[0]}
+            images_attributes['detectedObjects'] = boxes
 
             images_attributes['counts'] = {x:0 for x in classes}
             images_attributes['counts']['total'] = 0
             
             for box in boxes:
-                images_attributes['counts'][box['class']] +=1
+                images_attributes['counts'][box['detectedObjectType']] +=1
                 images_attributes['counts']['total'] +=1
+            end_time = datetime.now()
+            print('Detection finished in %s' % (end_time - start_time))
+            images_attributes['mlDoneAt'] = str(end_time)
+            images_attributes['mlTimeTaken'] = end_time - start_time
 
             all_images_attributes.append(images_attributes)
 
-        end_time = datetime.now()
-        print('Detection finished in %s' % (end_time - start_time))
+        
+
+
         return all_images_attributes
