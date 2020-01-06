@@ -47,9 +47,9 @@ docker-compose up
 ## Test
 
 For testing download data from:
-https://drive.google.com/open?id=1DjeNxdaF7AW3Nu54_3oRw_1SeYJtOvNL
+https://drive.google.com/drive/folders/1DjeNxdaF7AW3Nu54_3oRw_1SeYJtOvNL
 
-The dataset contains 804 images and label files.
+The garbage bags, containers and cardboard dataset contains 804 images and label files. A smaller dataset with annotations of cigarettes is also available.
 
 To run test execute the following code:
 
