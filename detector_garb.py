@@ -54,14 +54,30 @@ def draw_bbox(imgs, bbox, colors, classes,read_frames,output_path):
     p1 = tuple(bbox[1:3].int())
     p2 = tuple(bbox[3:5].int())
 
-    color = colors[int(bbox[-1])]
-    cv2.rectangle(img, p1, p2, color, 4)
-    text_size = cv2.getTextSize(label, cv2.FONT_HERSHEY_SIMPLEX, 1, 1)[0]
-    p3 = (p1[0], p1[1] - text_size[1] - 4)
-    p4 = (p1[0] + text_size[0] + 4, p1[1])
-    cv2.rectangle(img, p3, p4, color, -1)
 
-    cv2.putText(img, label, p1, cv2.FONT_HERSHEY_SIMPLEX, 1, [225, 255, 255], 1)
+    if 'privacy' in classes[int(bbox[-1])]:
+            topLeft = p1
+            bottomRight = p2
+            x, y = topLeft[0], topLeft[1]
+            w, h = bottomRight[0] - topLeft[0], bottomRight[1] - topLeft[1]
+
+            # Grab ROI with Numpy slicing and blur
+            ROI = img[y:y+h, x:x+w]
+            blur = cv2.GaussianBlur(ROI, (51,51), 0) 
+
+            # Insert ROI back into image
+            img[y:y+h, x:x+w] = blur
+    else:
+
+        color = colors[int(bbox[-1])]
+        cv2.rectangle(img, p1, p2, color, 4)
+        text_size = cv2.getTextSize(label, cv2.FONT_HERSHEY_SIMPLEX, 1, 1)[0]
+        p3 = (p1[0], p1[1] - text_size[1] - 4)
+        p4 = (p1[0] + text_size[0] + 4, p1[1])
+        cv2.rectangle(img, p3, p4, color, -1)
+
+        cv2.putText(img, label, p1, cv2.FONT_HERSHEY_SIMPLEX, 1, [225, 255, 255], 1)
+
 
 def detect_video(model, args):
 
@@ -188,8 +204,8 @@ def main():
         sys.exit(1)
 
     print('Loading network...')
-    model = Darknet("cfg/yolov3_garb_test.cfg")
-    model.load_weights('weights/garb.weights')
+    model = Darknet("cfg/yolov3_garb_9_test.cfg")
+    model.load_weights('weights/yolov3_garb.backup')
     if args.cuda:
         model.cuda()
 
