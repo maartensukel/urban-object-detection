@@ -10,7 +10,7 @@ This repository combines elements from:
 * https://github.com/zhaoyanglijoey/yolov3
 * https://github.com/ultralytics/yolov3
 
-![Demo 1](https://github.com/maartensukel/yolov3-pytorch-garbage-detection/raw/master/demo/garb_demo_4.gif)
+![Demo 1](https://github.com/maartensukel/yolov3-pytorch-garbage-detection/raw/master/demo/demo_1.png)
 
 Test and prediction code for a garbage object detection
 
