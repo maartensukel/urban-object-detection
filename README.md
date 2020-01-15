@@ -85,4 +85,5 @@ For training a new model look at:
 
 https://github.com/maartensukel/yolov3-garbage-object-detection-training
 
+This is the training loss of 1400 images with 9 classes:
 ![test_example](https://github.com/maartensukel/yolov3-pytorch-garbage-detection/raw/master/loss.png)
