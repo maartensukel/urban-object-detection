@@ -1,4 +1,4 @@
-![Demo 2](https://github.com/maartensukel/yolov3-pytorch-garbage-detection/raw/master/demo/garb_demo_2.gif)
+![Demo 2](https://github.com/maartensukel/yolov3-pytorch-garbage-detection/raw/master/demo/garb_demo_3.gif)
 
 # Garbage detection using PyTorch and YoloV3
 
@@ -25,12 +25,16 @@ pip install -r requirements.txt
 
 Several different weights and configs are available at: https://drive.google.com/open?id=1DjeNxdaF7AW3Nu54_3oRw_1SeYJtOvNL. Some also have the testing data.
 
+### Pre trained weights
+
 | Name | Classes          | Test data  |
 | ------------- |:-------------:| -----:|
 | 3 classes| cardboard, garbage_bags and containers| Yes |
 | cigarettes | cigarette     |  Yes|
 | 9 classes| container_small, garbage_bag, cardboard, matras, christmas_tree, graffiti, pole, face_privacy_filter and license_plate_privacy_filter     |   No|
 
+
+### Run predictions
 To run predictions, download the cfg and weights from https://drive.google.com/open?id=1DjeNxdaF7AW3Nu54_3oRw_1SeYJtOvNL and put them in the correct folders. 
 
 Then for example run the following the make a prediction on a file using CPU:
