@@ -74,3 +74,5 @@ python test.py
 For training a new model look at:
 
 https://github.com/maartensukel/yolov3-garbage-object-detection-training
+
+![test_example](https://github.com/maartensukel/yolov3-pytorch-garbage-detection/raw/master/loss.png)
