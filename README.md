@@ -82,7 +82,7 @@ python test.py
 
 The model with 12 classes has been trained on a larger collection. The test results are below.
 
-|Class    Images   Targets         P         R       mAP        F1
+|Class |Images|Targets|P |R |mAP |F1|
 |---------------------|--------|---------|-------|-------|-------|-------|
 |all|111|490|0.232|0.913|0.855|0.365|
 |container_small|111|91|0.407|0.956|0.948|0.57|
