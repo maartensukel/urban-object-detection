@@ -80,6 +80,25 @@ python test.py
 
 ![test_example](https://github.com/maartensukel/yolov3-pytorch-garbage-detection/raw/master/test_batch0.jpg)
 
+The model with 12 classes has been trained on a larger collection. The test results are below.
+
+|Class    Images   Targets         P         R       mAP        F1
+|---------------------|--------|---------|-------|-------|-------|-------|
+|all|111|490|0.232|0.913|0.855|0.365|
+|container_small|111|91|0.407|0.956|0.948|0.57|
+|garbage_bag|111|82|0.192|0.78|0.725|0.308|
+|cardboard|111|61|0.201|0.885|0.829|0.327|
+|matras|111|3|0.273|1|1|0.429|
+|kerstboom|111|11|0.147|0.909|0.848|0.253|
+|graffiti|111|34|0.15|1|0.98|0.262|
+|amsterdammertje|111|39|0.236|1|0.989|0.382|
+|face_privacy_filter|111|63|0.155|0.825|0.64|0.261|
+|license_plate_privacy_filter|111|79|0.226|0.797|0.615|0.352|
+|construction_toilet|111|5|0.235|0.8|0.7|0.364|
+|construction_container|111|16|0.246|1|0.982|0.395|
+|construction_shed|111|6|0.316|1|1|0.48|
+
+
 ## Training
 For training a new model look at:
 
