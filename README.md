@@ -31,7 +31,7 @@ Several different weights and configs are available at: https://drive.google.com
 | ------------- |:-------------:| -----:|
 | 3 classes| cardboard, garbage_bags and containers| Yes |
 | cigarettes | cigarette     |  Yes|
-| 9 classes| container_small, garbage_bag, cardboard, matras, christmas_tree, graffiti, pole, face_privacy_filter and license_plate_privacy_filter     |   No|
+| 12 classes| container_small, garbage_bag, cardboard, matras, christmas_tree, graffiti, pole, face_privacy_filter and license_plate_privacy_filter, construction_toilet, construction_container, construction_shed  |   No|
 
 
 ### Run predictions
