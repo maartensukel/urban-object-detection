@@ -81,22 +81,20 @@ python test.py
 
 The model with 12 classes has been trained on a larger collection. The test results are below.
 
-|Class |Images|Targets|P |R |mAP |F1|
-|---------------------|--------|---------|-------|-------|-------|-------|
-|all|111|490|0.232|0.913|0.855|0.365|
-|container_small|111|91|0.407|0.956|0.948|0.57|
-|garbage_bag|111|82|0.192|0.78|0.725|0.308|
-|cardboard|111|61|0.201|0.885|0.829|0.327|
-|matras|111|3|0.273|1|1|0.429|
-|kerstboom|111|11|0.147|0.909|0.848|0.253|
-|graffiti|111|34|0.15|1|0.98|0.262|
-|amsterdammertje|111|39|0.236|1|0.989|0.382|
-|face_privacy_filter|111|63|0.155|0.825|0.64|0.261|
-|license_plate_privacy_filter|111|79|0.226|0.797|0.615|0.352|
-|construction_toilet|111|5|0.235|0.8|0.7|0.364|
-|construction_container|111|16|0.246|1|0.982|0.395|
-|construction_shed|111|6|0.316|1|1|0.48|
-
+| Class                        | Images | Targets | P     | R     | mAP   | F1    |
+|------------------------------|--------|---------|-------|-------|-------|-------|
+| all                          | 179    | 706     | 0.263 | 0.873 | 0.811 | 0.392 |
+| container_small              | 179    | 142     | 0.521 | 0.972 | 0.97  | 0.678 |
+| garbage_bag                  | 179    | 114     | 0.266 | 0.965 | 0.936 | 0.417 |
+| cardboard                    | 179    | 78      | 0.132 | 0.962 | 0.89  | 0.232 |
+| matras                       | 179    | 8       | 0.467 | 0.875 | 0.875 | 0.609 |
+| kerstboom                    | 179    | 10      | 0.278 | 1     | 1     | 0.435 |
+| graffiti                     | 179    | 73      | 0.185 | 0.932 | 0.885 | 0.308 |
+| amsterdammertje              | 179    | 52      | 0.325 | 0.942 | 0.911 | 0.483 |
+| face_privacy_filter          | 179    | 87      | 0.139 | 0.782 | 0.599 | 0.237 |
+| license_plate_privacy_filter | 179    | 103     | 0.186 | 0.845 | 0.713 | 0.304 |
+| construction_toilet          | 179    | 7       | 0.211 | 0.571 | 0.524 | 0.308 |
+| construction_container       | 179    | 21      | 0.173 | 0.905 | 0.842 | 0.29  |
 
 ## Training
 For training a new model look at:
