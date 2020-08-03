@@ -1,3 +1,5 @@
+## New version with yolov5: https://gitlab.com/odk/odk-frame-analyzer
+
 ![Demo 2](https://github.com/maartensukel/yolov3-pytorch-garbage-detection/raw/master/demo/garb_demo_3.gif)
 
 # Urban object detection using PyTorch and YoloV3
