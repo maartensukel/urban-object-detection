@@ -1,7 +1,7 @@
 cycler==0.10.0
 kiwisolver==1.1.0
 matplotlib==3.1.1
-numpy==1.17.2
+numpy==1.22.0
 opencv-python==4.1.1.26
 Pillow
 pyparsing==2.4.2
